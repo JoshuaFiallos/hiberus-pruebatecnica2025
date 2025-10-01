@@ -1,0 +1,16 @@
+<h2>Métricas de Empleados</h2>
+
+<button (click)="getHighestSalary()">Empleado con mayor salario</button>
+<div *ngIf="highestSalary">
+  {{ highestSalary.firstName }} {{ highestSalary.lastName }} - {{ highestSalary.salary }}
+</div>
+
+<button (click)="getLowestAge()">Empleado más joven</button>
+<div *ngIf="youngestEmployee">
+  {{ youngestEmployee.firstName }} {{ youngestEmployee.lastName }} - {{ youngestEmployee.age }} años
+</div>
+
+<button (click)="getCountLastMonth()">Nuevos empleados este mes</button>
+<div *ngIf="countLastMonth !== undefined">
+  Ingresaron: {{ countLastMonth }}
+</div>

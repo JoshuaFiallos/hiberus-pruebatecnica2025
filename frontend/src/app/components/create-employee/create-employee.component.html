@@ -1,0 +1,12 @@
+<h2>Crear nuevo empleado</h2>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <input formControlName="firstName" placeholder="Nombres" />
+  <input formControlName="lastName" placeholder="Apellidos" />
+  <input formControlName="age" placeholder="Edad" type="number" />
+  <input formControlName="role" placeholder="Rol" />
+  <input formControlName="salary" placeholder="Salario" type="number" />
+  <input formControlName="hireDate" placeholder="Fecha de ingreso" type="date" />
+  <input formControlName="endDate" placeholder="Fecha de salida" type="date" />
+  <input formControlName="departmentId" placeholder="ID Departamento" type="number" />
+  <button type="submit" [disabled]="form.invalid">Crear</button>
+</form>

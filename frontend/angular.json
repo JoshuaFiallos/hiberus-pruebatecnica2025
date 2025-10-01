@@ -1,0 +1,12 @@
+"projects": {
+  "employee-management-frontend": {
+    ...
+    "architect": {
+      "build": {
+        "options": {
+          "outputPath": "dist/employee-management-frontend"
+        }
+      }
+    }
+  }
+}
