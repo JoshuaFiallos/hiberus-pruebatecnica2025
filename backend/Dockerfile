@@ -1,10 +1,21 @@
-FROM maven:3.8.6-openjdk-17 AS builder
+# Backend Dockerfile
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
-COPY . .
+
+# Copiar pom.xml y descargar dependencias
+COPY pom.xml ./
+RUN mvn dependency:go-offline
+
+# Copiar todo el backend y compilar
+COPY . ./
 RUN mvn clean package -DskipTests
 
-FROM openjdk:17-jdk-slim
+# Imagen final
+FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
-COPY --from=builder /app/target/*.jar app.jar
+
+# Copiar el JAR compilado
+COPY --from=build /app/target/*.jar app.jar
+
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]

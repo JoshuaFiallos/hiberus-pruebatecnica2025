@@ -1,20 +1,22 @@
-version: '3.8'
+version: "3.9"
 
 services:
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: employee-backend
     ports:
       - "8080:8080"
-    networks:
-      - emanet
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: always
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: employee-frontend
     ports:
-      - "4200:80"
-    networks:
-      - emanet
-
-networks:
-  emanet:
-    driver: bridge
+      - "4200:80"   # Cambia según tu app frontend
+    restart: always
